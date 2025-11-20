@@ -54,8 +54,12 @@ for step in $steps; do
 			;;
 		"release")
 			mkdir -p release
-			cp "buildroot-${BUILDROOT_VERSION}/output/images/sdcard.img" release/
+			cp -f "buildroot-${BUILDROOT_VERSION}/output/images/sdcard.img" release/
+			cp -f "buildroot-${BUILDROOT_VERSION}/output/images/squash.img" release/
+			rm -f release/sdcard.img.zst
+			rm -f release/squash.img.zst
 			zstd --rm release/sdcard.img
+			zstd --rm release/squash.img
 			;;
 		*)
 			echo "Unsupported step: $step"

@@ -4,8 +4,8 @@
 # See http://buildroot.org/manual.html#rootfs-custom
 # and http://elinux.org/RPiconfig for a description of config.txt syntax
 
-start_file=start4x.elf
-fixup_file=fixup4x.dat
+start_file=start4.elf
+fixup_file=fixup4.dat
 
 kernel=Image
 

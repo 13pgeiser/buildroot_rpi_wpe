@@ -4,7 +4,7 @@ set -e
 
 BOARD_DIR="$(dirname $0)"
 BOARD_NAME="$(basename ${BOARD_DIR})"
-GENIMAGE_CFG="${BOARD_DIR}/genimage-${BOARD_NAME}.cfg"
+GENIMAGE_CFG="${BOARD_DIR}/genimage-${BOARD_NAME}5.cfg"
 GENIMAGE_TMP="${BUILD_DIR}/genimage.tmp"
 
 # generate genimage from template if a board specific variant doesn't exists
@@ -36,7 +36,7 @@ rm -rf "${GENIMAGE_TMP}"
 
 # cmdline.txt
 cat <<EOF >"${BINARIES_DIR}/cmdline.txt"
-root=/dev/mmcblk0p2 rootfstype=squashfs ro rootwait console=tty1 console=ttyAMA0,115200
+root=/dev/mmcblk0p2 rootfstype=squashfs ro rootwait console=tty1 console=ttyAMA10,115200
 EOF
 
 genimage \

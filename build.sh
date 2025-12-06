@@ -2,7 +2,7 @@
 # Author: P. Geiser.
 set -ex
 EXT=xz
-BUILDROOT_VERSION=2025.08.1
+BUILDROOT_VERSION=2025.08.2
 
 if [ -z "$1" ]; then
 	steps="buildroot apt defconfig sdk build release"
@@ -36,7 +36,8 @@ for step in $steps; do
 		"defconfig")
 			(
 			cd "buildroot-${BUILDROOT_VERSION}" || exit 1
-			make BR2_EXTERNAL=../pag raspberrypi4_64_defconfig
+			#make BR2_EXTERNAL=../pag raspberrypi4_64_defconfig
+			make BR2_EXTERNAL=../pag raspberrypi5_defconfig
 			#make BR2_EXTERNAL=../pag menuconfig
 			)
 			;;

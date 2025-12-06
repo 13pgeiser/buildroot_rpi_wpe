@@ -8,4 +8,3 @@ auto wlan0
 iface wlan0 inet dhcp
    pre-up wpa_supplicant -B -Dnl80211,wext -i wlan0 -c /etc/wpa_supplicant.conf
    post-down killall -q wpa_supplicant
-

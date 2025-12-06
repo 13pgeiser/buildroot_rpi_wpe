@@ -4,9 +4,6 @@
 # See http://buildroot.org/manual.html#rootfs-custom
 # and http://elinux.org/RPiconfig for a description of config.txt syntax
 
-start_file=start4.elf
-fixup_file=fixup4.dat
-
 kernel=Image
 
 # To use an external initramfs file
@@ -16,17 +13,5 @@ kernel=Image
 # If the text shown on the screen disappears off the edge, comment this out
 disable_overscan=1
 
-# How much memory in MB to assign to the GPU on Pi models having
-# 256, 512 or 1024 MB total memory
-gpu_mem_256=100
-gpu_mem_512=100
-gpu_mem_1024=100
-
-# Enable UART0 for serial console on ttyAMA0
-dtoverlay=miniuart-bt
-
-# enable 64bits support
-arm_64bit=1
-
 dtoverlay=vc4-kms-v3d
-#max_framebuffers=2
+max_framebuffers=2

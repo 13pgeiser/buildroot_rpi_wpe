@@ -15,5 +15,4 @@ chmod 700 $XDG_RUNTIME_DIR
 weston --log /tmp/weston.txt &
 sleep 1
 export WAYLAND_DISPLAY=wayland-1
-export COG_PLATFORM_WL_VIEW_FULLSCREEN=1
-cog -P wl "$URL" &
+/usr/bin/PaGBrowser &

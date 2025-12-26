@@ -1,0 +1,5 @@
+config BR2_PACKAGE_PAGBROWSER
+	bool "PAGBROWSER"
+	help
+	  My modified webkit browser
+	depends on BR2_PACKAGE_WEBKITGTK

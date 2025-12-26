@@ -1,0 +1,10 @@
+PAGBROWSER_VERSION = 1.0
+PAGBROWSER_SITE = $(BR2_EXTERNAL_PAG_PATH)/package/PaGBrowser/src
+PAGBROWSER_SITE_METHOD = local
+PAGBROWSER_DEPENDENCIES = webkitgtk host-pkgconf
+
+define PAGBROWSER_BUILD_CMDS
+    $(TARGET_MAKE_ENV) $(TARGET_CONFIGURE_OPTS) $(MAKE) -C $(@D) PREFIX=$(TARGET_DIR)/usr install
+endef
+
+$(eval $(generic-package))

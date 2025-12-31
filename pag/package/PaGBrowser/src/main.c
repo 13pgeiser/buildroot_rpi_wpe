@@ -1,13 +1,6 @@
 #include <gtk/gtk.h>
 #include <webkit/webkit.h>
-
-typedef struct {
-  guint width;
-  guint height;
-  guint bytes_per_pixel;
-  gchar *comment;
-  char *pixel_data;
-} Picture;
+#include "icons.h"
 
 typedef struct {
   const Picture *pic;
@@ -15,15 +8,10 @@ typedef struct {
   WebKitWebView *webview;
 } ButtonData;
 
-extern const Picture grafana;
-extern const Picture meteo;
-extern const Picture buildbot;
-extern const Picture gallery;
-extern const Picture status;
 
 ButtonData buttons[] = {
   {
-    &grafana,
+    &electricity,
     "http://debiand843e635fb7:3000/d/574d7f7f-bc36-4dce-abf0-c2ddb74a452b/power?orgId=1&from=now-30m&to=now&timezone=browser&refresh=5s&kiosk",
     NULL,
   },
@@ -39,11 +27,11 @@ ButtonData buttons[] = {
   },
   {
     &gallery,
-    "http://debiand843e635fb7:8080/search/%7B%22type%22:102,%22text%22:%22GLOBE.TROTTEUSE%22%7D?play=true&autoUpdateInterval=300&loopSlideshow=true&captionAlwaysOn=true&slideshowSpeed=5",
+    "http://debiand843e635fb7/releases/gallery/web/",
     NULL,
   },
   {
-    &status,
+    &grafana,
     "  http://debiand843e635fb7:3000/d/rYdddlPWk/node-exporter-full?orgId=1&from=now-24h&to=now&timezone=browser&var-DS_PROMETHEUS=feyz1hxdjkbuob&var-job=router&var-nodename=debiand843e635fb7&var-node=debiand843e635fb7.home:9100&var-diskdevices=%5Ba-z%5D%2B%7Cnvme%5B0-9%5D%2Bn%5B0-9%5D%2B%7Cmmcblk%5B0-9%5D%2B&refresh=1m&kiosk",
     NULL,
   },

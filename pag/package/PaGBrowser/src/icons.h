@@ -17,5 +17,6 @@ extern const Picture buildbot;
 extern const Picture gallery;
 extern const Picture status;
 extern const Picture electricity;
+extern const Picture rts;
 
 #endif // _ICONS_

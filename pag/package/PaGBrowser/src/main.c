@@ -1,13 +1,14 @@
+#include "icons.h"
 #include <gtk/gtk.h>
 #include <webkit/webkit.h>
-#include "icons.h"
+
+// #define USE_OVERLAY
 
 typedef struct {
   const Picture *pic;
   const char *url;
   WebKitWebView *webview;
 } ButtonData;
-
 
 ButtonData buttons[] = {
   {
@@ -86,7 +87,7 @@ void on_button(GtkButton *btn, gpointer user_data) {
 static void activate(GtkApplication *app, gpointer user_data) {
   // Window Setup
   GtkWidget *window = gtk_application_window_new(app);
-  gtk_window_set_default_size(GTK_WINDOW(window), 1280, 1024);
+  gtk_window_set_default_size(GTK_WINDOW(window), 1920, 1080);
   gtk_window_set_title(GTK_WINDOW(window), "PaGBrowser");
 
   // Dark Theme
@@ -97,10 +98,7 @@ static void activate(GtkApplication *app, gpointer user_data) {
   WebKitWebView *webView = WEBKIT_WEB_VIEW(webkit_web_view_new());
   WebKitSettings *settings = webkit_web_view_get_settings(webView);
   webkit_settings_set_allow_modal_dialogs(settings, TRUE);
-  // 1. Get the network session from the web view
   WebKitNetworkSession *session = webkit_web_view_get_network_session(webView);
-
-  // 2. Set the TLS errors policy on the session
   webkit_network_session_set_tls_errors_policy(session,
                                                WEBKIT_TLS_ERRORS_POLICY_IGNORE);
 
@@ -114,15 +112,28 @@ static void activate(GtkApplication *app, gpointer user_data) {
 
   webkit_web_view_load_uri(webView, buttons[0].url);
 
-  // Layout
-  GtkWidget *hbox = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
-  GtkWidget *vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
+#ifdef USE_OVERLAY
+  GtkWidget *overlay = gtk_overlay_new();
+  gtk_window_set_child(GTK_WINDOW(window), overlay);
+  gtk_overlay_set_child(GTK_OVERLAY(overlay), GTK_WIDGET(webView));
+  // Create the Toolbar (a GtkBox with "toolbar" style class)
+  GtkWidget *toolbar = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 5);
+  gtk_widget_add_css_class(toolbar, "toolbar"); // Essential for toolbar styling
 
-  gtk_box_append(GTK_BOX(hbox), vbox);
+  // Set positioning and margins to make it "float"
+  gtk_widget_set_halign(toolbar, GTK_ALIGN_CENTER);
+  gtk_widget_set_valign(toolbar, GTK_ALIGN_END);
+  gtk_widget_set_margin_bottom(toolbar, 20);
+  gtk_overlay_add_overlay(GTK_OVERLAY(overlay), toolbar);
+
+#else // ! USE_OVERLAY
+  GtkWidget *hbox = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
+  GtkWidget *toolbar = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
+  gtk_box_append(GTK_BOX(hbox), toolbar);
   gtk_box_append(GTK_BOX(hbox), GTK_WIDGET(webView));
   gtk_widget_set_hexpand(GTK_WIDGET(webView), TRUE);
-
   gtk_window_set_child(GTK_WINDOW(window), hbox);
+#endif
 
   for (int i = 0; i < (sizeof(buttons) / sizeof(ButtonData)); i++) {
     buttons[i].webview = webView;
@@ -140,11 +151,12 @@ static void activate(GtkApplication *app, gpointer user_data) {
     gtk_image_set_pixel_size(GTK_IMAGE(image), target_size);
     gtk_button_set_child(GTK_BUTTON(button), image);
     g_signal_connect(button, "clicked", G_CALLBACK(on_button), &buttons[i]);
-    gtk_box_append(GTK_BOX(vbox), button);
+    gtk_box_append(GTK_BOX(toolbar), button);
     g_object_unref(pixbuf);
     g_object_unref(scaled_pixbuf);
     g_object_unref(texture);
   }
+
   gtk_window_present(GTK_WINDOW(window));
 }
 

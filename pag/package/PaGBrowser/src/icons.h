@@ -4,11 +4,11 @@
 #include <gtk/gtk.h>
 
 typedef struct {
-  guint  	 width;
-  guint  	 height;
-  guint  	 bytes_per_pixel;
-  gchar  	*comment;
-  char 	  *pixel_data;
+  guint width;
+  guint height;
+  guint bytes_per_pixel;
+  gchar *comment;
+  char *pixel_data;
 } Picture;
 
 extern const Picture grafana;

@@ -1,0 +1,2 @@
+# Run start.sh every minute
+* * * * * /start.sh

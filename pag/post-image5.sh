@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -e
-
+chmod 600 ${TARGET_DIR}/var/spool/cron/crontabs/root
 BOARD_DIR="$(dirname $0)"
 BOARD_NAME="$(basename ${BOARD_DIR})"
 GENIMAGE_CFG="${BOARD_DIR}/genimage-${BOARD_NAME}5.cfg"

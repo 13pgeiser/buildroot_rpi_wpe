@@ -39,6 +39,7 @@ for step in $steps; do
 			#make BR2_EXTERNAL=../pag raspberrypi4_64_defconfig
 			make BR2_EXTERNAL=../pag raspberrypi5_defconfig
 			#make BR2_EXTERNAL=../pag menuconfig
+			#make BR2_EXTERNAL=../pag busybox-menuconfig
 			)
 			;;
 		"sdk")

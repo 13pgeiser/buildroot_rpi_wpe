@@ -1,0 +1,28 @@
+#!/bin/sh
+
+start() {
+  /start.sh
+}
+
+stop() {
+  echo "nothing to do"
+}
+
+restart() {
+  stop
+  sleep 1
+  start
+}
+
+case "$1" in
+start | stop | restart)
+  "$1"
+  ;;
+reload)
+  restart
+  ;;
+*)
+  echo "Usage: $0 {start|stop|restart|reload}"
+  exit 1
+  ;;
+esac

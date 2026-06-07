@@ -1,2 +1,1 @@
-source "$BR2_EXTERNAL_PAG_PATH/package/helloworld/Config.in"
 source "$BR2_EXTERNAL_PAG_PATH/package/PaGBrowser/Config.in"

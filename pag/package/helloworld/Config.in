@@ -1,5 +1,0 @@
-config BR2_PACKAGE_HELLOWORLD
-	bool "helloworld"
-	help
-	  Hello world package
-

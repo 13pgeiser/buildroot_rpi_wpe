@@ -6,8 +6,8 @@ TARGET = PaGBrowser
 # Default target: compile the program
 all: $(TARGET)
 
-$(TARGET): main.c icon_buildbot.c icon_electricity.c icon_gallery.c icon_grafana.c icon_meteo.c icon_status.c icon_rts.c
-	$(CC) -o $(TARGET) main.c icon_buildbot.c icon_electricity.c icon_gallery.c icon_grafana.c icon_meteo.c icon_status.c icon_rts.c `pkg-config gtk4 webkitgtk-6.0 --cflags --libs`
+$(TARGET): main.c icon_buildbot.c icon_electricity.c icon_gallery.c icon_grafana.c icon_meteo.c icon_rts.c
+	$(CC) -o $(TARGET) main.c icon_buildbot.c icon_electricity.c icon_gallery.c icon_grafana.c icon_meteo.c icon_rts.c `pkg-config gtk4 webkitgtk-6.0 --cflags --libs`
 
 # Install target: copies the binary to /usr/bin
 install: all

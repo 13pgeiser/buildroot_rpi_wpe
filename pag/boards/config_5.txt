@@ -18,3 +18,12 @@ max_framebuffers=2
 
 hdmi_force_hotplug=1
 hdmi_drive=2
+
+dtparam=cooling_fan=on
+dtparam=fan_temp0=30000
+dtparam=fan_temp0_hyst=5000
+dtparam=fan_temp0_speed=75
+dtparam=fan_temp1=50000
+dtparam=fan_temp1_hyst=5000
+dtparam=fan_temp1_speed=255
+

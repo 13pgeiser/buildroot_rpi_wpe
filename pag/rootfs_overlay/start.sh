@@ -9,6 +9,7 @@ echo "network ready"
 if pidof "PaGBrowser" > /dev/null; then
     echo "PaGBrowser Running"
 else
+    echo 4 >/sys/class/thermal/cooling_device0/cur_state
     export XDG_RUNTIME_DIR=/tmp/weston
     mkdir -p $XDG_RUNTIME_DIR
     chmod 700 $XDG_RUNTIME_DIR

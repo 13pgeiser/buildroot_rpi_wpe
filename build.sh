@@ -39,6 +39,7 @@ for step in $steps; do
 			#make BR2_EXTERNAL=../pag raspberrypi4_64_defconfig
 			make BR2_EXTERNAL=../pag raspberrypi5_defconfig
 			#make BR2_EXTERNAL=../pag menuconfig
+			#make BR2_EXTERNAL=../pag linux-menuconfig
 			#make BR2_EXTERNAL=../pag busybox-menuconfig
 			)
 			;;
@@ -51,6 +52,7 @@ for step in $steps; do
 		"build")
 			(
 			cd "buildroot-${BUILDROOT_VERSION}" || exit 1
+			#make BR2_EXTERNAL=../pag linux-rebuild
 			make BR2_EXTERNAL=../pag all 2>&1 | tee make.log
 			)
 			;;

@@ -19,11 +19,18 @@ max_framebuffers=2
 hdmi_force_hotplug=1
 hdmi_drive=2
 
+# Fan profile: starts slowly at 45C, ramps to full speed at 75C
 dtparam=cooling_fan=on
-dtparam=fan_temp0=30000
+dtparam=fan_temp0=45000
 dtparam=fan_temp0_hyst=5000
-dtparam=fan_temp0_speed=75
-dtparam=fan_temp1=50000
+dtparam=fan_temp0_speed=76
+dtparam=fan_temp1=55000
 dtparam=fan_temp1_hyst=5000
-dtparam=fan_temp1_speed=255
+dtparam=fan_temp1_speed=127
+dtparam=fan_temp2=65000
+dtparam=fan_temp2_hyst=5000
+dtparam=fan_temp2_speed=178
+dtparam=fan_temp3=75000
+dtparam=fan_temp3_hyst=5000
+dtparam=fan_temp3_speed=255
 

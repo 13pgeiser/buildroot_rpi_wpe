@@ -18,7 +18,7 @@ ButtonData buttons[] = {
   },
   {
     &electricity,
-    "http://debiand843e635fb7:3000/d/574d7f7f-bc36-4dce-abf0-c2ddb74a452b/power?orgId=1&from=now-30m&to=now&timezone=browser&refresh=5s&kiosk",
+    "http://ai350:3000/d/abeeb65f-46de-4ecd-856a-82ecfeaed1ba/power?orgId=1&from=now-30m&to=now&timezone=browser&refresh=5s&kiosk",
     NULL,
   },
   {
@@ -33,7 +33,7 @@ ButtonData buttons[] = {
   },
   {
     &grafana,
-    "http://debiand843e635fb7:3000/d/rYdddlPWk/node-exporter-full?orgId=1&from=now-24h&to=now&timezone=browser&var-DS_PROMETHEUS=feyz1hxdjkbuob&var-job=router&var-nodename=debiand843e635fb7&var-node=debiand843e635fb7.home:9100&var-diskdevices=%5Ba-z%5D%2B%7Cnvme%5B0-9%5D%2Bn%5B0-9%5D%2B%7Cmmcblk%5B0-9%5D%2B&refresh=1m&kiosk",
+    "http://ai350:3000/d/rYdddlPWk/node-exporter-full?orgId=1&from=now-24h&to=now&timezone=browser&var-ds_prometheus=eg2zgfddk0kjkc&var-job=nodes&var-nodename=ai350&var-node=ai350:9100&refresh=1m&kiosk",
     NULL,
   },
   {

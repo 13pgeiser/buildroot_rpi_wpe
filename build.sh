@@ -2,7 +2,7 @@
 # Author: P. Geiser.
 set -ex
 EXT=xz
-BUILDROOT_VERSION=2026.05
+BUILDROOT_VERSION=2026.08.1
 
 if [ -z "$1" ]; then
 	steps="buildroot apt defconfig sdk build release"

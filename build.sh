@@ -3,7 +3,11 @@
 set -ex
 EXT=xz
 BUILDROOT_VERSION=2026.08.1
-
+BR2_JLEVEL=0
+if [ "$(hostname)" == "ai350" ]; then
+	BR2_JLEVEL=8
+fi
+echo "JOBS=$BR2_JLEVEL"
 if [ -z "$1" ]; then
 	steps="buildroot apt defconfig sdk build release"
 else
@@ -48,14 +52,14 @@ for step in $steps; do
 		"sdk")
 			(
 			cd "buildroot-${BUILDROOT_VERSION}" || exit 1
-			make BR2_EXTERNAL=../pag prepare-sdk
+			make BR2_EXTERNAL=../pag  "BR2_JLEVEL=$BR2_JLEVEL" prepare-sdk
 			)
 			;;
 		"build")
 			(
 			cd "buildroot-${BUILDROOT_VERSION}" || exit 1
 			#make BR2_EXTERNAL=../pag linux-rebuild
-			make BR2_EXTERNAL=../pag all 2>&1 | tee make.log
+			make BR2_EXTERNAL=../pag "BR2_JLEVEL=$BR2_JLEVEL" all 2>&1 | tee make.log
 			)
 			;;
 		"release")

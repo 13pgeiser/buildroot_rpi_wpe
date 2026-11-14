@@ -13,7 +13,7 @@ typedef struct {
 ButtonData buttons[] = {
   {
     &gallery,
-    "http://debiand843e635fb7/releases/photoframe/",
+    "http://ai350/releases/photoframe/",
     NULL,
   },
   {
@@ -28,7 +28,7 @@ ButtonData buttons[] = {
   },
   {
     &buildbot,
-    "http://debiand843e635fb7:8010/",
+    "http://ai350:8010/",
     NULL,
   },
   {

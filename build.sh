@@ -9,8 +9,10 @@ if [ -z "$1" ]; then
 else
 	steps="$@"
 fi
-if [ -e ../../wpa_supplicant.conf ]; then
-	cp -f ../../wpa_supplicant.conf ./pag/rootfs_overlay/etc/
+if [ -e ../../wpa_supplicant.conf.gpg ]; then
+	gpg -d ../../wpa_supplicant.conf.gpg >./pag/rootfs_overlay/etc/wpa_supplicant.conf
+else
+	cp /wpa_supplicant.conf ./pag/rootfs_overlay/etc/
 fi
 for step in $steps; do
 	echo "STEP: $step"

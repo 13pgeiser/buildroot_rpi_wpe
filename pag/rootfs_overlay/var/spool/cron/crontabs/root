@@ -1,2 +1,4 @@
-# Run start.sh every minute
+# Recovery: start.sh is idempotent — it exits immediately if PaGBrowser is
+# already running, so this only relaunches Weston/Browser if they died.
+# (It no longer blocks on the network: the wait is bounded in start.sh.)
 * * * * * /start.sh

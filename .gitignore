@@ -1,3 +1,4 @@
 buildroot-*
 ccache-buildroot
+pag/rootfs_overlay/etc/wpa_supplicant.conf
 release
